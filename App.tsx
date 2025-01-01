@@ -7,14 +7,17 @@
 
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
 function App() {
   return (
-    <SafeAreaView style={styles.backgroundStyle}>
-      <View style={styles.container}>
-        <Text style={styles.title}>hello world</Text>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={styles.backgroundStyle}>
+        <View style={styles.container}>
+          <Text style={styles.title}>된건가?? pod-install 안되던데?</Text>
+        </View>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 }
 
