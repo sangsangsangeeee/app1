@@ -5,6 +5,7 @@ import type {StaticParamList} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomePage from './src/pages/Home';
 import WritePage from './src/pages/Write';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const RootStack = createNativeStackNavigator({
   initialRouteName: 'Home',
@@ -24,7 +25,11 @@ declare global {
 const Navigation = createStaticNavigation(RootStack);
 
 function App() {
-  return <Navigation />;
+  return (
+    <GestureHandlerRootView style={{flex: 1}}>
+      <Navigation />
+    </GestureHandlerRootView>
+  );
 }
 
 export default App;
