@@ -8,9 +8,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useSetTodo} from '../stores/todo';
 
 function WritePage() {
   const navigation = useNavigation();
+  const setTotoAtom = useSetTodo();
 
   const [todo, setTodo] = useState({
     exp: '',
@@ -25,7 +27,11 @@ function WritePage() {
     }));
   };
 
-  const goBack = () => {
+  const onPressWithSetTodoAtom = () => {
+    setTotoAtom(prev => [...prev, todo]);
+  };
+
+  const onPressOutWithGoBack = () => {
     navigation.goBack();
   };
 
@@ -52,7 +58,10 @@ function WritePage() {
           onChangeText={onChangeWithTodoData('description')}
         />
       </View>
-      <TouchableOpacity style={styles.bottomButton} onPressOut={goBack}>
+      <TouchableOpacity
+        style={styles.bottomButton}
+        onPressOut={onPressOutWithGoBack}
+        onPress={onPressWithSetTodoAtom}>
         <Text style={styles.bottomButtonText}>저장</Text>
       </TouchableOpacity>
     </SafeAreaView>
